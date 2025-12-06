@@ -1,0 +1,12 @@
+- name: Copy sshd_config
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: 0600
+    owner: root
+    group: root
+
+- name: Restart sshd
+  service:
+    name: ssh
+    state: restarted
