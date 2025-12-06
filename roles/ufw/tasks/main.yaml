@@ -1,0 +1,6 @@
+- name: Allow SSH from 103.136.58.0/24
+  ufw:
+    rule: allow
+    from: 103.136.58.0/24
+    port: ssh
+    state: enabled
