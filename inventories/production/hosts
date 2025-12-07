@@ -1,3 +1,9 @@
 [racknerd-la]
 racknerd01-la
 racknerd02-la
+
+[racknerd01]
+racknerd01-la
+
+[racknerd02]
+racknerd02-la

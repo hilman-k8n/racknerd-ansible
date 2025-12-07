@@ -1,0 +1,20 @@
+- name: add docker repo
+  block:
+  - name: add apt key
+    get_url:
+      url: "{{ docker_repo_key_url }}"
+      dest: "{{ docker_repo_key_destination_path }}"
+  - name: add repo
+    apt_repository:
+      repo: "deb [arch=amd64 signed-by={{docker_repo_key_destination_path}}] {{ docker_repo_url }} {{ ansible_facts['distribution_release'] }} stable"
+      state: present
+      filename: docker
+  - name: install docker
+    apt:
+      name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+      state: present

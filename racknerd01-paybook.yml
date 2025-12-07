@@ -1,0 +1,5 @@
+- name: racknerd01 playbook
+  hosts: racknerd01
+  user: root
+  roles:
+    - role: docker

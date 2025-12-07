@@ -1,0 +1,3 @@
+docker_repo_url: https://download.docker.com/linux/ubuntu
+docker_repo_key_url: https://download.docker.com/linux/ubuntu/gpg
+docker_repo_key_destination_path: /etc/apt/keyrings/docker.asc
