@@ -1,0 +1,5 @@
+- name: netbird playbook
+  hosts: racknerd02
+  user: root
+  roles:
+    - role: docker
