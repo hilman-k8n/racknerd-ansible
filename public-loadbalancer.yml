@@ -1,0 +1,30 @@
+- name: load balancer
+  hosts: racknerd01
+  user: root
+  roles:
+  - role: sshd
+  - role: ufw
+    vars:
+      ufw:
+        rules:
+        - name: SSH
+          rule: allow
+          from: 103.136.58.0/24
+          port: ssh
+          state: enabled
+        - name: HTTPS
+          rule: allow
+          from: 0.0.0.0/0
+          port: https
+          state: enabled
+        - name: HTTP
+          rule: allow
+          from: 0.0.0.0/0
+          port: http
+          state: enabled
+        - name: netbird wireguard client
+          rule: allow
+          from: 0.0.0.0/0
+          port: 51820
+          state: enabled
+  - role: docker
