@@ -1,0 +1,30 @@
+- name: netbird playbook
+  hosts: racknerd02
+  user: root
+  roles:
+  - role: sshd
+  - role: ufw
+    vars:
+      ufw:
+        rules:
+        - name: SSH
+          rule: allow
+          from: 103.136.58.0/24
+          port: ssh
+          state: enabled        
+        - name: HTTPS
+          rule: allow
+          from: 0.0.0.0/0
+          port: https
+          state: enabled
+        - name: HTTP
+          rule: allow
+          from: 0.0.0.0/0
+          port: http
+          state: enabled
+        - name: netbird STUN
+          rule: allow
+          from: 0.0.0.0/0
+          port: 3478
+          state: enabled
+  - role: docker

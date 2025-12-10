@@ -1,6 +1,0 @@
-- name: Racknerd Playbook
-  hosts: racknerd-la
-  user: root
-  roles:
-    - role: sshd
-    - role: ufw

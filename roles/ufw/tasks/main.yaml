@@ -1,18 +1,8 @@
-- name: Allow SSH from 103.136.58.0/24
+---
+- name: Apply ufw rules
   ufw:
-    rule: allow
-    from: 103.136.58.0/24
-    port: ssh
-    state: enabled
-- name: Allow 443 from public
-  ufw:
-    rule: allow
-    from: 0.0.0.0/0
-    port: https
-    state: enabled
-- name: Allow 80 from public
-  ufw:
-    rule: allow
-    from: 0.0.0.0/0
-    port: http
-    state: enabled
+    rule: "{{ item.rule }}"
+    from: "{{ item.from }}"
+    port: "{{ item.port }}"
+    state: "{{ item.state }}"
+  loop: "{{ ufw.rules }}"
