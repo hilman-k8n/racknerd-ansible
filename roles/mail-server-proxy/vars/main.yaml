@@ -1,0 +1,1 @@
+nginx_stream_conf_dir: /etc/nginx/stream.d

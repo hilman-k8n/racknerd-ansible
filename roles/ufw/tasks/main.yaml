@@ -5,4 +5,5 @@
     from: "{{ item.from }}"
     port: "{{ item.port }}"
     state: "{{ item.state }}"
+    proto: "{{ item.proto}}"
   loop: "{{ ufw.rules }}"

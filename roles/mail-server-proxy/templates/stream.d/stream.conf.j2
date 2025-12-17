@@ -1,0 +1,11 @@
+stream {
+    upstream {{ item.name }} {
+        server adguard-dns.homelab.svc.cluster.local:53;
+    }
+
+    # DNS over UDP
+    server {
+        listen {{ item.port }} {{ item.proto }};
+        proxy_pass {{ item.name }};
+    }
+}

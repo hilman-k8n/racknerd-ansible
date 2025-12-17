@@ -1,0 +1,26 @@
+- name: install nginx
+  apt:
+    name:
+      - nginx
+      - libnginx-mod-stream
+    state: present
+
+- name: copy nginx conf
+  template:
+    src: templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+
+- name: create {{ nginx_stream_conf_dir }} directory
+  file:
+    path: "{{ nginx_stream_conf_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: copy nginx stream conf
+  template:
+    src: "templates/stream.d/stream.conf.j2"
+    dest: "{{ nginx_stream_conf_dir}}/{{ item.name }}.conf"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop: "{{ nginx.stream_conf }}"

@@ -10,21 +10,46 @@
         - name: SSH
           rule: allow
           from: 103.136.58.0/24
-          port: ssh
+          port: 22
+          proto: tcp
           state: enabled
-        - name: HTTPS
+        - name: HTTPS-TCP
           rule: allow
           from: 0.0.0.0/0
-          port: https
+          port: 443
+          proto: tcp
+          state: enabled
+        - name: HTTPS-UDP
+          rule: allow
+          from: 0.0.0.0/0
+          port: 443
+          proto: udp
           state: enabled
         - name: HTTP
           rule: allow
           from: 0.0.0.0/0
           port: http
+          proto: tcp
           state: enabled
         - name: netbird wireguard client
           rule: allow
           from: 0.0.0.0/0
           port: 51820
+          proto: udp
+          state: enabled
+        - name: testing network load balancer
+          rule: allow
+          from: 0.0.0.0/0
+          port: 8888
+          proto: udp
           state: enabled
   - role: docker
+  - role: mail-server-proxy
+    vars:
+      nginx:
+        stream_conf:
+          - name: smtp
+            port: 8888
+            proto: udp
+            upstream: adguard-dns.homelab.svc.cluster.local:53
+            
