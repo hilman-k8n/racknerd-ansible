@@ -7,3 +7,9 @@ racknerd01-la
 
 [racknerd02]
 racknerd02-la
+
+[netbird-cp-core]
+oracle-01.sg.local
+
+[netbird-cp]
+oracle-02.sg.local

@@ -1,0 +1,42 @@
+- name: netbird-cp-core playbook
+  hosts: netbird-cp-core
+  user: ubuntu
+  become: yes
+  roles:
+  # UFW and sshd already managed by the cloud provider
+  #- role: sshd
+  #- role: ufw
+  #  vars:
+  #    ufw:
+  #      rules:
+  #      - name: SSH
+  #        rule: allow
+  #        from: 103.136.58.0/24
+  #        port: ssh
+  #        proto: tcp
+  #        state: enabled        
+  #      - name: HTTPS-TCP
+  #        rule: allow
+  #        from: 0.0.0.0/0
+  #        port: 443
+  #        proto: tcp
+  #        state: enabled
+  #      - name: HTTPS-UDP
+  #        rule: allow
+  #        from: 0.0.0.0/0
+  #        port: 443
+  #        proto: udp
+  #        state: enabled
+  #      - name: HTTP
+  #        rule: allow
+  #        from: 0.0.0.0/0
+  #        port: 80
+  #        proto: tcp
+  #        state: enabled
+  #      - name: netbird STUN
+  #        rule: allow
+  #        from: 0.0.0.0/0
+  #        port: 3478
+  #        proto: udp
+  #        state: enabled
+  - role: docker
