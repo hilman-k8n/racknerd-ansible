@@ -1,0 +1,24 @@
+---
+- name: Ensure data directory exists
+  ansible.builtin.file:
+    path: "{{ stalwart_data_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Pull Stalwart image
+  community.docker.docker_image:
+    name: "{{ stalwart_image }}"
+    source: pull
+
+- name: Run Stalwart container
+  community.docker.docker_container:
+    name: "{{ stalwart_container_name }}"
+    image: "{{ stalwart_image }}"
+    restart_policy: "{{ stalwart_restart_policy }}"
+    dns_servers: "{{ stalwart_dns }}"
+    published_ports: "{{ stalwart_ports }}"
+    volumes:
+      - "{{ stalwart_data_dir }}:{{ stalwart_container_data_dir }}"
+    state: started

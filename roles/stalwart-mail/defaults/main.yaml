@@ -1,0 +1,16 @@
+stalwart_image: "stalwartlabs/stalwart:v0.15.1-alpine"
+stalwart_container_name: "stalwart"
+
+stalwart_restart_policy: "unless-stopped"
+
+stalwart_dns:
+  - "8.8.8.8"
+
+stalwart_ports:
+  - "443:443"
+  - "25:25"
+  - "465:465"
+  - "993:993"
+
+stalwart_data_dir: "/var/lib/stalwart"
+stalwart_container_data_dir: "/opt/stalwart"
