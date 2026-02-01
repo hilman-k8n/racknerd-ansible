@@ -1,0 +1,30 @@
+#- name: node-exporter us
+#  hosts: node-exporter-us
+#  user: root
+#  become: yes
+#  roles:
+#  - role: ufw
+#    vars:
+#      ufw:
+#        rules:
+#        - name: Allow node-exporter port
+#          rule: allow
+#          from: 0.0.0.0/0
+#          port: 9100
+#          proto: tcp
+#          state: enabled
+#  - role: node-exporter
+#- name: node-exporter sg
+#  hosts: node-exporter-sg
+#  user: ubuntu
+#  become: yes
+#  roles:
+#  - role: node-exporter
+- name: node-exporter sg-arm
+  hosts: node-exporter-sg-arm
+  user: ubuntu
+  become: yes
+  vars:
+    node_exporter_arch: linux-arm64
+  roles:
+  - role: node-exporter

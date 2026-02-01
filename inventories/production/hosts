@@ -13,3 +13,18 @@ oracle-01.sg.local
 
 [netbird-cp]
 oracle-02.sg.local
+
+[stalwart-mail-server]
+01.us.racknerd.internal
+
+[node-exporter-us]
+01.us.racknerd.internal
+02.us.racknerd.internal
+
+[node-exporter-sg]
+01.sg.oracle.internal
+02.sg.oracle.internal
+
+[node-exporter-sg-arm]
+03.sg.oracle.internal
+04.sg.oracle.internal

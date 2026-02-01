@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  stalwart:
+    image: stalwartlabs/stalwart:v0.15.1-alpine
+    container_name: stalwart
+    restart: unless-stopped
+    dns:
+      - 8.8.8.8
+    ports:
+      - "443:443"
+      - "25:25"
+      - "465:465"
+      - "993:993"
+    volumes:
+      - /var/lib/stalwart:/opt/stalwart
